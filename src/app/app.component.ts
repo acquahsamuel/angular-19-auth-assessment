@@ -16,3 +16,4 @@ export class AppComponent {
 
   auth = inject(AuthService);
 }
+
