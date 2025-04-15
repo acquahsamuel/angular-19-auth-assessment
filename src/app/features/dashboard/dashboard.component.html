@@ -1,3 +1,52 @@
-<section>
-    <h1>Dashboard</h1>
-</section>
+<div *ngIf="auth.loading$ | async" class="loading-overlay">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div
+  class="container mt-4 mb-4 p-3 d-flex justify-content-center"
+  [class.blur]="auth.loading$ | async"
+>
+  <div class="card p-4">
+    <div
+      class="image d-flex flex-column justify-content-center align-items-center"
+    >
+     
+        <img
+          *ngIf="user.profileUrl"
+          src="{{ user.profileUrl }}"
+          height="100"
+          width="100"
+        />
+        <img
+          *ngIf="!user.profileUrl"
+          src="https://placehold.co/400"
+          alt=""
+          height="100"
+          width="100"
+          class="rounded-circle"
+        />
+
+      <span class="name mt-3">{{ user.name | titlecase }}</span>
+
+       <p> Account Type :  {{user.accountType | titlecase}}</p>
+      <div
+        class="d-flex flex-row justify-content-center align-items-center gap-2"
+      >
+        <span class="idd1">{{ user.email }}</span>
+      </div>
+      <div class="text mt-3">
+        <span>
+            CreatedAt
+        </span> 
+        <span>
+          {{ user.createdAt | date: "medium" }}
+        </span>
+      </div>
+      <div class="px-2 rounded mt-4" (click)="onLogout()">
+        <span class="btn btn-secondary btn-sm rounded-md">Logout</span>
+      </div>
+    </div>
+  </div>
+</div>
