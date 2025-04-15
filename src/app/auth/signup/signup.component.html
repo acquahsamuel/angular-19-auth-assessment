@@ -67,14 +67,14 @@
                   formControlName="password"
                   [class.is-invalid]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
                 >
-                <span 
+                <!-- <span 
                  
                   class="fa fa-eye toggle-password" 
                   (click)="togglePasswordVisibility()" 
                   type="button"
                 >
                   {{ showPassword ? '' : '' }}
-                 </span>
+                 </span> -->
                 <div class="invalid-feedback">
                   <span *ngIf="signupForm.get('password')?.errors?.['required']">Password is required</span>
                   <span *ngIf="signupForm.get('password')?.errors?.['minlength']">
